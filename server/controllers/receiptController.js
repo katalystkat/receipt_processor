@@ -1,6 +1,6 @@
 const NodeCache = require("node-cache");
 const { v4: uuidv4 } = require("uuid");
-
+const { DateTime } = require('luxon');
 const myCache = new NodeCache();
 const controller = {};
 
@@ -20,10 +20,10 @@ const isMultipleCents = (totalStr) => {
 }
 
 const isOddDate = (purchaseDate) => {
-    const dateObj = new Date(purchaseDate);
+    const dateObj = DateTime.fromISO(purchaseDate, { zone: "America/Los_Angeles" });
     console.log('purchaseDate: ' + purchaseDate);
     console.log('dateObj: ' + dateObj)
-    const dayOfMonth = dateObj.getDate();
+    const dayOfMonth = dateObj.day;
     console.log('dayOfMonth: ' + dayOfMonth)
     return dayOfMonth%2 !== 0;
 }
