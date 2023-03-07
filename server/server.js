@@ -1,10 +1,8 @@
-const express = require('express');
-const bodyParser = require('body-parser');
+import express from 'express';
+import bodyParser from 'body-parser'
+import receiptsRouter from './routes/receipts.js';
 const app = express();
 const PORT = 3000;
-
-// Import routers
-const receiptsRouter = require('./routes/receipts.js');
 
 // Parsing request body
 app.use(express.json());
